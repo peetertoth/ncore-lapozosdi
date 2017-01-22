@@ -6,9 +6,9 @@
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
 // @grant        none
-// @updateURL    https://raw.githubusercontent.com/peetertoth/ncore-torrent-lapozosdi/master/ncore-lapozosdi.js
-// @downloadURL  https://raw.githubusercontent.com/peetertoth/ncore-torrent-lapozosdi/master/ncore-lapozosdi.js
-// @require      https://raw.githubusercontent.com/peetertoth/ncore-torrent-lapozosdi/master/ncore-lapozosdi-module-functions
+// @updateURL    https://raw.githubusercontent.com/peetertoth/ncore-lapozosdi/master/ncore-lapozosdi.js
+// @downloadURL  https://raw.githubusercontent.com/peetertoth/ncore-lapozosdi/master/ncore-lapozosdi.js
+// @require      https://raw.githubusercontent.com/peetertoth/ncore-lapozosdi/master/ncore-lapozosdi-module-functions
 // ==/UserScript==
 
 (function() {
