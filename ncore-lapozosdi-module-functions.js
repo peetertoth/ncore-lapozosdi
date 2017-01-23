@@ -46,12 +46,21 @@ var f_stepTorrent = function(down) {
 	if (v_detailsIsOpen) {
 		f_openDetailsHelper(previousBox);
 		f_openDetailsHelper(v_currentBox);
+		f_scrollTo(v_currentBox);
 	}
+}
+
+var f_scrollTo = function(cBox) {
+	cBox.scrollIntoView();
 }
 
 var f_openDetails = function () {
 	f_openDetailsHelper(v_currentBox);
 	v_detailsIsOpen = !v_detailsIsOpen;
+	
+	if (v_detailsIsOpen) {
+		f_scrollTo(v_currentBox);
+	}
 }
 
 var f_openDetailsHelper = function(cBox) {
