@@ -59,6 +59,8 @@ var f_keypress_step = function(e) {
 		f_stepTorrent(false);
 	} else if (e.keyCode == 108) { // 108 - l - openDetails
 		f_openDetails();
+	} else {
+		console.log(e.keyCode);
 	}
 }
 
