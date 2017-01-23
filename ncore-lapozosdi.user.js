@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.11
+// @version      0.12
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
@@ -11,9 +11,6 @@
 // @require      https://raw.githubusercontent.com/peetertoth/ncore-lapozosdi/master/ncore-lapozosdi-module-functions.js
 // ==/UserScript==
 
-(function() {
-    'use strict';
-	
 	// Main
 
 	var v_boxes = f_collectTorrentBoxes();
@@ -23,16 +20,11 @@
 	var v_originalBackgroundColor = v_currentBox.style.backgroundColor;
 	var v_highlightedBackgroundColor = '#aaaa99';
 	v_currentBox.style.backgroundColor = v_highlightedBackgroundColor;
+	
+	var v_detailsIsOpen = false;
 
-	// Register keypress 
+	// Register keypress
 
 	document.onkeypress = f_keypress;
 
 	// 106 j, 107 k, 108 l
-	
-})();
-
-
-
-
-

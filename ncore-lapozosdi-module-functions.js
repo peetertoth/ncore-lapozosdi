@@ -38,16 +38,26 @@ var f_stepTorrent = function(down) {
 		}
 	}
 	
-	var v_previousBox = v_currentBox;
+	var previousBox = v_currentBox;
 	v_currentBox = v_boxes[v_currentBoxIndex];
 	
-	f_changeBackgrounColor(v_previousBox, v_currentBox);
+	f_changeBackgrounColor(previousBox, v_currentBox);
+	
+	if (v_detailsIsOpen) {
+		f_openDetailsHelper(previousBox);
+		f_openDetailsHelper(v_currentBox);
+	}
 }
 
 var f_openDetails = function () {
-	var torrentTxtClassEntity = v_currentBox.getElementsByClassName('torrent_txt')[0];
+	f_openDetailsHelper(v_currentBox);
+	v_detailsIsOpen = !v_detailsIsOpen;
+}
+
+var f_openDetailsHelper = function(cBox) {
+	var torrentTxtClassEntity = cBox.getElementsByClassName('torrent_txt')[0];
 	if (torrentTxtClassEntity == null) {
-		torrentTxtClassEntity = v_currentBox.getElementsByClassName('torrent_txt2')[0];
+		torrentTxtClassEntity = cBox.getElementsByClassName('torrent_txt2')[0];
 	}
 	torrentTxtClassEntity.children[0].click();
 }
@@ -57,13 +67,17 @@ var f_keypress_step = function(e) {
 		f_stepTorrent(true);
 	} else if (e.keyCode == 107) { // 107 - k - down:false
 		f_stepTorrent(false);
-	} else if (e.keyCode == 108) { // 108 - l - openDetails
+	} else if (e.keyCode == 120) { // 120 - x - openDetails
 		f_openDetails();
+	} else if (e.keyCode == 108) { // 108 - l - 
+		
 	} else {
 		console.log(e.keyCode);
 	}
 }
 
 var f_keypress = function (e) {
-	f_keypress_step(e);
+	if (e.target.tagName != "INPUT") {
+		f_keypress_step(e);		
+	}
 }
