@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.16
+// @version      0.161
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
@@ -30,7 +30,7 @@
 	var v_highlightedBackgroundColor = '#aaaa99';
 	
 	v_currentBox.style.backgroundColor = v_highlightedBackgroundColor;
-	f_scrollIntoViewIfNotVisible(v_currentBox);
+	f_scrollToIfNotVisible(v_currentBox);
 	
 	var v_detailsIsOpen = false;
 
