@@ -57,8 +57,8 @@ var f_boxSelectionChanged = function(previousBox) {
 	}
 	
 	if (v_infobarIsOpen) {
-		f_openInfobar(previousBox);
-		f_openInfobar(v_currentBox);
+		f_openInfobarHelper(previousBox);
+		f_openInfobarHelper(v_currentBox);
 	}
 	
 	f_scrollToIfNotVisible(v_currentBox);
@@ -106,7 +106,11 @@ var f_openDetailsHelper = function(cBox) {
 }
 
 var f_openInfobar = function() {
-	var infobar = v_currentBox.getElementsByClassName('infobar')[0];
+	f_openInfobarHelper(v_currentBox);
+}
+
+var f_openInfobarHelper = function(cBox) {
+	var infobar = cBox.getElementsByClassName('infobar')[0];
 	if (infobar == null) {
 		return;
 	}
