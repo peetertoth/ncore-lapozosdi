@@ -45,6 +45,10 @@ var f_stepTorrent = function(down) {
 	var previousBox = v_currentBox;
 	v_currentBox = v_boxes[v_currentBoxIndex];
 	
+	f_boxSelectionChanged(previousBox);
+}
+
+var f_boxSelectionChanged = function(previousBox) {
 	f_changeBackgrounColor(previousBox, v_currentBox);
 	
 	if (v_detailsIsOpen) {
@@ -54,6 +58,20 @@ var f_stepTorrent = function(down) {
 	}
 	
 	f_scrollToIfNotVisible(v_currentBox);
+}
+
+var f_stepTorrentToBottom = function() {
+	var previousBox = v_currentBox;
+	v_currentBox = v_boxes[v_boxes.length - 1];
+	
+	f_boxSelectionChanged(previousBox);
+}
+
+var f_stepTorrentToTop = function() {
+	var previousBox = v_currentBox;
+	v_currentBox = v_boxes[0];
+	
+	f_boxSelectionChanged(previousBox);
 }
 
 var f_scrollTo = function(cBox) {
@@ -84,8 +102,12 @@ var f_openDetailsHelper = function(cBox) {
 var f_keypress_step = function(e) {
 	if (e.keyCode == 106) { // 106 - j - down:true
 		f_stepTorrent(true);
+	} else if (e.keyCode == 107) { // 74 - J - bottom
+		f_stepTorrentToBottom();
 	} else if (e.keyCode == 107) { // 107 - k - down:false
 		f_stepTorrent(false);
+	} else if (e.keyCode == 75) { // 75 - K - top
+		f_stepTorrentToTop();
 	} else if (e.keyCode == 120) { // 120 - x - openDetails
 		f_openDetails();
 	} else if (e.keyCode == 108) { // 108 - l - 

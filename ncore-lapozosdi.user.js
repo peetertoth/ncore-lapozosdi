@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.17
+// @version      0.18
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
@@ -23,6 +23,7 @@
 	var v_currentTimeInMillis = new Date().getTime();
 	if (v_lastPaging != null && v_currentTimeInMillis - v_lastPaging < 2000) {
 		v_currentBoxIndex = v_boxes.length - 1;
+		f_setCookie(COOKIE_KEY_LAPOZAS, 0);
 	}
 	
 	var v_currentBox = v_boxes[v_currentBoxIndex];
