@@ -23,7 +23,6 @@ var f_changeBackgrounColor = function(prev, current) {
 }
 
 var f_stepTorrent = function(down) {
-	console.log('step');
 	if (down) {
 		if (v_currentBoxIndex == v_boxes.length - 1) {
 			// v_currentBoxIndex = 0;
@@ -57,11 +56,15 @@ var f_boxSelectionChanged = function(previousBox) {
 		f_scrollTo(v_currentBox);
 	}
 	
+	if (v_infobarIsOpen) {
+		f_openInfobar(previousBox);
+		f_openInfobar(v_currentBox);
+	}
+	
 	f_scrollToIfNotVisible(v_currentBox);
 }
 
 var f_stepTorrentToBottom = function() {
-	console.log('bottom');
 	var previousBox = v_currentBox;
 	v_currentBoxIndex = v_boxes.length - 1
 	v_currentBox = v_boxes[v_currentBoxIndex];
@@ -70,7 +73,6 @@ var f_stepTorrentToBottom = function() {
 }
 
 var f_stepTorrentToTop = function() {
-	console.log('top');
 	var previousBox = v_currentBox;
 	v_currentBoxIndex = 0;
 	v_currentBox = v_boxes[v_currentBoxIndex];
@@ -103,6 +105,20 @@ var f_openDetailsHelper = function(cBox) {
 	torrentTxtClassEntity.children[0].click();
 }
 
+var f_openInfobar = function() {
+	var infobar = v_currentBox.getElementsByClassName('infobar')[0];
+	if (infobar == null) {
+		return;
+	}
+	
+	if(v_infobarIsOpen) {
+		infobar.children[0].onmouseout();
+	} else {
+		infobar.children[0].onmouseover();
+	}
+	v_infobarIsOpen = !v_infobarIsOpen;
+}
+
 var f_keypress_step = function(e) {
 	if (e.keyCode == 106) { // 106 - j - down:true
 		f_stepTorrent(true);
@@ -116,6 +132,8 @@ var f_keypress_step = function(e) {
 		f_openDetails();
 	} else if (e.keyCode == 108) { // 108 - l - 
 		
+	} else if (e.keyCode == 99) { // 99 - c - openInfobar
+		f_openInfobar();
 	} else {
 		console.log(e.keyCode);
 	}
