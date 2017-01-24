@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.24
+// @version      0.25
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
@@ -12,11 +12,15 @@
 // ==/UserScript==
 
 	var COOKIE_KEY_LAPOZAS = "lapozas";
+	var COOKIE_KEY_DETAILS_LAPOZAS = "details-lapozas";
+	var COOKIE_KEY_INFOBAR_LAPOZAS = "infobar-lapozas";
 
 	// Main
 
 	var v_boxes = f_collectTorrentBoxes();
 	var v_currentBoxIndex = 0;
+	var v_detailsIsOpen = false;
+	var v_infobarIsOpen = false;
 	
 	// Check paging backwards
 	var v_lastPaging = f_getCookie(COOKIE_KEY_LAPOZAS);
@@ -26,6 +30,19 @@
 		f_setCookie(COOKIE_KEY_LAPOZAS, 0);
 	}
 	
+	// Check details and infobar were open
+	var v_isDetailsOpen = f_getCookie(COOKIE_KEY_DETAILS_LAPOZAS);
+	var v_isInfobarOpen = f_getCookie(COOKIE_KEY_INFOBAR_LAPOZAS);
+	if (v_isDetailsOpen != null && v_currentTimeInMillis - v_isDetailsOpen < 2000) {
+		f_openDetailsHelper(v_currentBox);
+		f_setCookie(COOKIE_KEY_DETAILS_LAPOZAS, 0);
+	}
+	if (v_isInfobarOpen != null && v_currentTimeInMillis - v_isInfobarOpen < 2000) {
+		f_openInfobarHelper(v_currentBox);
+		f_setCookie(COOKIE_KEY_INFOBAR_LAPOZAS, 0);
+	}
+	
+	
 	var v_currentBox = v_boxes[v_currentBoxIndex];
 	var v_originalBackgroundColor = v_currentBox.style.backgroundColor;
 	var v_highlightedBackgroundColor = '#aaaa99';
@@ -33,8 +50,7 @@
 	v_currentBox.style.backgroundColor = v_highlightedBackgroundColor;
 	f_scrollToIfNotVisible(v_currentBox);
 	
-	var v_detailsIsOpen = false;
-	var v_infobarIsOpen = false;
+	
 
 	// Register keypress
 

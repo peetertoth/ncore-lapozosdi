@@ -26,16 +26,14 @@ var f_stepTorrent = function(down) {
 	if (down) {
 		if (v_currentBoxIndex == v_boxes.length - 1) {
 			// v_currentBoxIndex = 0;
-			f_setCookie(COOKIE_KEY_LAPOZAS, 0);
-			f_simulateKeyPress(39);
+			f_nextPage();
 		} else {
 			v_currentBoxIndex++;
 		}
 	} else {
 		if (v_currentBoxIndex == 0) {
 			// v_currentBoxIndex = v_boxes.length - 1;
-			f_setCookie(COOKIE_KEY_LAPOZAS, new Date().getTime());
-			f_simulateKeyPress(37);
+			f_previousPage();
 		} else {
 			v_currentBoxIndex--;
 		}
@@ -45,6 +43,31 @@ var f_stepTorrent = function(down) {
 	v_currentBox = v_boxes[v_currentBoxIndex];
 	
 	f_boxSelectionChanged(previousBox);
+}
+
+var f_nextPage = function() {
+	f_setCookie(COOKIE_KEY_LAPOZAS, 0);
+	
+	f_saveStateToCookie();
+	
+	f_simulateKeyPress(39);
+}
+
+var f_previousPage = function() {
+	f_setCookie(COOKIE_KEY_LAPOZAS, new Date().getTime());
+	
+	f_saveStateToCookie();
+	
+	f_simulateKeyPress(37);
+}
+
+var f_saveStateToCookie() {
+	if (v_detailsIsOpen) {
+		f_setCookie(COOKIE_KEY_DETAILS_LAPOZAS, new Date().getTime());
+	}
+	if (v_infobarIsOpen) {
+		f_setCookie(COOKIE_KEY_INFOBAR_LAPOZAS, new Date().getTime());
+	}
 }
 
 var f_boxSelectionChanged = function(previousBox) {
