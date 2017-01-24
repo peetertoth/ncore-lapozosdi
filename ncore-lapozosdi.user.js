@@ -43,7 +43,7 @@
 	var v_isDetailsOpen = f_getCookie(COOKIE_KEY_DETAILS_LAPOZAS);
 	var v_isInfobarOpen = f_getCookie(COOKIE_KEY_INFOBAR_LAPOZAS);
 	if (v_isDetailsOpen != null && v_currentTimeInMillis - v_isDetailsOpen < 2000) {
-		f_openDetailsHelper(v_currentBox);
+		f_openDetails();
 		v_detailsIsOpen = true;
 		f_setCookie(COOKIE_KEY_DETAILS_LAPOZAS, 0);
 	}
