@@ -26,13 +26,17 @@ var f_stepTorrent = function(down) {
 	
 	if (down) {
 		if (v_currentBoxIndex == v_boxes.length - 1) {
-			v_currentBoxIndex = 0;
+			// v_currentBoxIndex = 0;
+			f_setCookie(COOKIE_KEY_LAPOZAS, 0);
+			f_simulateKeyPress(39);
 		} else {
 			v_currentBoxIndex++;
 		}
 	} else {
 		if (v_currentBoxIndex == 0) {
-			v_currentBoxIndex = v_boxes.length - 1;
+			// v_currentBoxIndex = v_boxes.length - 1;
+			f_setCookie(COOKIE_KEY_LAPOZAS, new Date().getTime());
+			f_simulateKeyPress(37);
 		} else {
 			v_currentBoxIndex--;
 		}
@@ -96,3 +100,35 @@ var f_keypress = function (e) {
 		f_keypress_step(e);		
 	}
 }
+	
+var f_setCookie = function(key, value) {
+	document.cookie = key + "=" + value;
+}
+
+var f_getCookie = function(key) {
+	var cKey = " " + key + "=";
+	
+	if (document.cookie.lastIndexOf(cKey) == -1) {
+		return null;
+	} else {	
+		return document.cookie.split(cKey)[1].split(";")[0];
+	}
+}
+
+// 37 / left
+// 39 / right
+var f_simulateKeyPress = function(keyCode)
+{
+    if(document.createEventObject) {
+        var eventObj = document.createEventObject();
+        eventObj.keyCode = keyCode;
+        document.fireEvent("onkeydown", eventObj);
+        eventObj.keyCode = keyCode;   
+    } else if(document.createEvent) {
+        var eventObj = document.createEvent("Events");
+        eventObj.initEvent("keydown", true, true);
+        eventObj.which = keyCode; 
+        eventObj.keyCode = keyCode;
+        document.dispatchEvent(eventObj);
+    }
+} 
