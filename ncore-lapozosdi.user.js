@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.26
+// @version      0.27
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
@@ -30,6 +30,15 @@
 		f_setCookie(COOKIE_KEY_LAPOZAS, 0);
 	}
 	
+	
+	var v_currentBox = v_boxes[v_currentBoxIndex];
+	var v_originalBackgroundColor = v_currentBox.style.backgroundColor;
+	var v_highlightedBackgroundColor = '#aaaa99';
+	
+	v_currentBox.style.backgroundColor = v_highlightedBackgroundColor;
+	f_scrollToIfNotVisible(v_currentBox);
+	
+	
 	// Check details and infobar were open
 	var v_isDetailsOpen = f_getCookie(COOKIE_KEY_DETAILS_LAPOZAS);
 	var v_isInfobarOpen = f_getCookie(COOKIE_KEY_INFOBAR_LAPOZAS);
@@ -41,16 +50,6 @@
 		f_openInfobarHelper(v_currentBox);
 		f_setCookie(COOKIE_KEY_INFOBAR_LAPOZAS, 0);
 	}
-	
-	
-	var v_currentBox = v_boxes[v_currentBoxIndex];
-	var v_originalBackgroundColor = v_currentBox.style.backgroundColor;
-	var v_highlightedBackgroundColor = '#aaaa99';
-	
-	v_currentBox.style.backgroundColor = v_highlightedBackgroundColor;
-	f_scrollToIfNotVisible(v_currentBox);
-	
-	
 
 	// Register keypress
 
