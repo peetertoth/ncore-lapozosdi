@@ -23,7 +23,7 @@ var f_changeBackgrounColor = function(prev, current) {
 }
 
 var f_stepTorrent = function(down) {
-	
+	console.log('step');
 	if (down) {
 		if (v_currentBoxIndex == v_boxes.length - 1) {
 			// v_currentBoxIndex = 0;
@@ -61,6 +61,7 @@ var f_boxSelectionChanged = function(previousBox) {
 }
 
 var f_stepTorrentToBottom = function() {
+	console.log('bottom');
 	var previousBox = v_currentBox;
 	v_currentBoxIndex = v_boxes.length - 1
 	v_currentBox = v_boxes[v_currentBoxIndex];
@@ -69,6 +70,7 @@ var f_stepTorrentToBottom = function() {
 }
 
 var f_stepTorrentToTop = function() {
+	console.log('top');
 	var previousBox = v_currentBox;
 	v_currentBoxIndex = 0;
 	v_currentBox = v_boxes[v_currentBoxIndex];
