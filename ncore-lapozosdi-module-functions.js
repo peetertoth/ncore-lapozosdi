@@ -61,7 +61,7 @@ var f_previousPage = function() {
 	f_simulateKeyPress(37);
 }
 
-var f_saveStateToCookie() {
+var f_saveStateToCookie = function() {
 	if (v_detailsIsOpen) {
 		f_setCookie(COOKIE_KEY_DETAILS_LAPOZAS, new Date().getTime());
 	}
