@@ -102,7 +102,7 @@ var f_openDetailsHelper = function(cBox) {
 var f_keypress_step = function(e) {
 	if (e.keyCode == 106) { // 106 - j - down:true
 		f_stepTorrent(true);
-	} else if (e.keyCode == 107) { // 74 - J - bottom
+	} else if (e.keyCode == 74) { // 74 - J - bottom
 		f_stepTorrentToBottom();
 	} else if (e.keyCode == 107) { // 107 - k - down:false
 		f_stepTorrent(false);
