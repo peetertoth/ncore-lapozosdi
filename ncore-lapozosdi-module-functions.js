@@ -62,14 +62,16 @@ var f_boxSelectionChanged = function(previousBox) {
 
 var f_stepTorrentToBottom = function() {
 	var previousBox = v_currentBox;
-	v_currentBox = v_boxes[v_boxes.length - 1];
+	v_currentBoxIndex = v_boxes.length - 1
+	v_currentBox = v_boxes[v_currentBoxIndex];
 	
 	f_boxSelectionChanged(previousBox);
 }
 
 var f_stepTorrentToTop = function() {
 	var previousBox = v_currentBox;
-	v_currentBox = v_boxes[0];
+	v_currentBoxIndex = 0;
+	v_currentBox = v_boxes[v_currentBoxIndex];
 	
 	f_boxSelectionChanged(previousBox);
 }
