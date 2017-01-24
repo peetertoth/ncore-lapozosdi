@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.28
+// @version      0.29
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
@@ -44,7 +44,6 @@
 	var v_isInfobarOpen = f_getCookie(COOKIE_KEY_INFOBAR_LAPOZAS);
 	if (v_isDetailsOpen != null && v_currentTimeInMillis - v_isDetailsOpen < 2000) {
 		f_openDetails();
-		v_detailsIsOpen = true;
 		f_setCookie(COOKIE_KEY_DETAILS_LAPOZAS, 0);
 	}
 	if (v_isInfobarOpen != null && v_currentTimeInMillis - v_isInfobarOpen < 2000) {
