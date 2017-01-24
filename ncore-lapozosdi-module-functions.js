@@ -110,17 +110,19 @@ var f_openInfobar = function() {
 }
 
 var f_openInfobarHelper = function(cBox) {
+	var infobarState = v_infobarIsOpen;
+	v_infobarIsOpen = !v_infobarIsOpen;
+	
 	var infobar = cBox.getElementsByClassName('infobar')[0];
 	if (infobar == null) {
 		return;
 	}
 	
-	if(v_infobarIsOpen) {
+	if(infobarState) {
 		infobar.children[0].onmouseout();
 	} else {
 		infobar.children[0].onmouseover();
 	}
-	v_infobarIsOpen = !v_infobarIsOpen;
 }
 
 var f_keypress_step = function(e) {
