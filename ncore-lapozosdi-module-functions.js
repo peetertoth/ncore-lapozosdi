@@ -175,7 +175,7 @@ var f_loadDetailsIfNeeded = function(cDetails) {
 var f_openDetailsInNewPage = function(cDetails) {
 	f_loadDetailsIfNeeded(cDetails);
 	
-	var lehetosegek = cDetails.children[0].children;
+	var lehetosegek = cDetails.children[0];
 	var reszletek = lehetosegek.getElementsByClassName('t_details')[0];
 	var aElement = reszletek.children[0];
 	
