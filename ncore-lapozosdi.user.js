@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.29
+// @version      0.30
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*

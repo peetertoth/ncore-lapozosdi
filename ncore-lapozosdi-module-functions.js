@@ -27,6 +27,7 @@ var f_stepTorrent = function(down) {
 		if (v_currentBoxIndex == v_boxes.length - 1) {
 			// v_currentBoxIndex = 0;
 			f_nextPage();
+			return;
 		} else {
 			v_currentBoxIndex++;
 		}
@@ -34,6 +35,7 @@ var f_stepTorrent = function(down) {
 		if (v_currentBoxIndex == 0) {
 			// v_currentBoxIndex = v_boxes.length - 1;
 			f_previousPage();
+			return;
 		} else {
 			v_currentBoxIndex--;
 		}
