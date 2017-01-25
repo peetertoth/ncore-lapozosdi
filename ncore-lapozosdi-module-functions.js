@@ -165,21 +165,14 @@ var f_openInfobarHelper = function(cBox) {
 	}
 }
 
-var f_loadDetailsIfNeeded = function(cDetails) {
-	console.log('load-if-needed');
-	
+var f_loadDetailsIfNeeded = function(cDetails) {	
 	if (cDetails.childElementCount == 0) {
-		console.log('load-if-needed - needed!!');
 		torrent(cDetails.id);
 		cDetails.style.display = 'none';
-		console.log('count' + cDetails.childElementCount);
 	}
 }
 
 var f_openDetailsInNewPage = function(cDetails) {
-	console.log('open-details-new-page');
-	
-	f_loadDetailsIfNeeded(cDetails);
 	
 	var lehetosegek = cDetails.children[0];
 	var reszletek = lehetosegek.getElementsByClassName('t_details')[0];
@@ -200,6 +193,7 @@ var f_keypress_step = function(e) {
 	} else if (e.keyCode == 120) { // 120 - x - openDetails
 		f_openDetails();
 	} else if (e.keyCode == 108) { // 108 - l - openDetailsInNewPage
+		f_loadDetailsIfNeeded(v_details[v_currentBoxIndex]);
 		f_openDetailsInNewPage(v_details[v_currentBoxIndex]);
 	} else if (e.keyCode == 99) { // 99 - c - openInfobar
 		f_openInfobar();
