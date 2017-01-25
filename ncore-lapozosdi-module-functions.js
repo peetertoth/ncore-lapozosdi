@@ -166,13 +166,19 @@ var f_openInfobarHelper = function(cBox) {
 }
 
 var f_loadDetailsIfNeeded = function(cDetails) {
+	console.log('load-if-needed');
+	
 	if (cDetails.childElementCount == 0) {
+		console.log('load-if-needed - needed!!');
 		torrent(cDetails.id);
 		cDetails.style.display = 'none';
+		console.log('count' + cDetails.childElementCount);
 	}
 }
 
 var f_openDetailsInNewPage = function(cDetails) {
+	console.log('open-details-new-page');
+	
 	f_loadDetailsIfNeeded(cDetails);
 	
 	var lehetosegek = cDetails.children[0];
