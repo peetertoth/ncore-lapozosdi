@@ -15,6 +15,23 @@ var f_collectTorrentBoxes = function() {
 	return boxes;
 }
 
+var f_collectTorrentDetails = function() {
+
+	var boxes1 = document.getElementsByClassName('torrent_lenyilo');
+	var boxes2 = document.getElementsByClassName('torrent_lenyilo2');
+
+	var boxes = [];
+
+	for (var i = 0; i < boxes2.length; i++) {
+		if (boxes2[i] != null)
+			boxes.push(boxes2[i]);
+		if (boxes1[i] != null)
+			boxes.push(boxes1[i]);
+	}
+	
+	return boxes;
+}
+
 var f_changeBackgrounColor = function(prev, current) {
 	prev.style.backgroundColor = v_originalBackgroundColor;
 	
@@ -25,7 +42,6 @@ var f_changeBackgrounColor = function(prev, current) {
 var f_stepTorrent = function(down) {
 	if (down) {
 		if (v_currentBoxIndex == v_boxes.length - 1) {
-			// v_currentBoxIndex = 0;
 			f_nextPage();
 			return;
 		} else {
@@ -33,7 +49,6 @@ var f_stepTorrent = function(down) {
 		}
 	} else {
 		if (v_currentBoxIndex == 0) {
-			// v_currentBoxIndex = v_boxes.length - 1;
 			f_previousPage();
 			return;
 		} else {
@@ -150,6 +165,23 @@ var f_openInfobarHelper = function(cBox) {
 	}
 }
 
+var f_loadDetailsIfNeeded = function(cDetails) {
+	if (cDetails.childElementCount == 0) {
+		torrent(cDetails.id);
+		cDetails.style.display = 'none';
+	}
+}
+
+var f_openDetailsInNewPage = function(cDetails) {
+	f_loadDetailsIfNeeded(cDetails);
+	
+	var lehetosegek = cDetails.children[0].children;
+	var reszletek = lehetosegek.getElementsByClassName('t_details')[0];
+	var aElement = reszletek.children[0];
+	
+	window.open(aElement.href, '_blank');
+}
+
 var f_keypress_step = function(e) {
 	if (e.keyCode == 106) { // 106 - j - down:true
 		f_stepTorrent(true);
@@ -161,8 +193,8 @@ var f_keypress_step = function(e) {
 		f_stepTorrentToTop();
 	} else if (e.keyCode == 120) { // 120 - x - openDetails
 		f_openDetails();
-	} else if (e.keyCode == 108) { // 108 - l - 
-		
+	} else if (e.keyCode == 108) { // 108 - l - openDetailsInNewPage
+		f_openDetailsInNewPage(v_details[v_currentBoxIndex]);
 	} else if (e.keyCode == 99) { // 99 - c - openInfobar
 		f_openInfobar();
 	} else {
@@ -192,8 +224,7 @@ var f_getCookie = function(key) {
 
 // 37 / left
 // 39 / right
-var f_simulateKeyPress = function(keyCode)
-{
+var f_simulateKeyPress = function(keyCode) {
     if(document.createEventObject) {
         var eventObj = document.createEventObject();
         eventObj.keyCode = keyCode;

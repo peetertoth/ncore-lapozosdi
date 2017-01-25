@@ -1,7 +1,7 @@
 ﻿// ==UserScript==
 // @name         Ncore lapozósdi
 // @namespace    peetft.ddns.net
-// @version      0.30
+// @version      0.31
 // @description  Ncore kiegészítő
 // @author       peeter.toth@gmail.com
 // @match        https://ncore.cc/torrents.php*
@@ -18,6 +18,8 @@
 	// Main
 
 	var v_boxes = f_collectTorrentBoxes();
+	var v_details = f_collectTorrentDetails();
+	
 	var v_currentBoxIndex = 0;
 	var v_detailsIsOpen = false;
 	var v_infobarIsOpen = false;
