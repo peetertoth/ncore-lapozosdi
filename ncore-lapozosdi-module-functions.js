@@ -88,6 +88,7 @@ var f_saveStateToCookie = function() {
 }
 
 var f_boxSelectionChanged = function(previousBox) {
+	f_loadDetailsIfNeeded(v_details[v_currentBoxIndex]);
 	f_changeBackgrounColor(previousBox, v_currentBox);
 	
 	if (v_detailsIsOpen) {
@@ -165,7 +166,7 @@ var f_openInfobarHelper = function(cBox) {
 	}
 }
 
-var f_loadDetailsIfNeeded = function(cDetails) {	
+var f_loadDetailsIfNeeded = function(cDetails) {
 	if (cDetails.childElementCount == 0) {
 		torrent(cDetails.id);
 		cDetails.style.display = 'none';
@@ -193,7 +194,6 @@ var f_keypress_step = function(e) {
 	} else if (e.keyCode == 120) { // 120 - x - openDetails
 		f_openDetails();
 	} else if (e.keyCode == 108) { // 108 - l - openDetailsInNewPage
-		f_loadDetailsIfNeeded(v_details[v_currentBoxIndex]);
 		f_openDetailsInNewPage(v_details[v_currentBoxIndex]);
 	} else if (e.keyCode == 99) { // 99 - c - openInfobar
 		f_openInfobar();
